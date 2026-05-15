@@ -1,328 +1,417 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>개인정보처리방침 - pXlab firstclass</title>
-    <style>
-        :root {
-            --bg: #f9f7f4;
-            --surface: #ffffff;
-            --text: #1a1a1a;
-            --muted: #6b6b6b;
-            --accent: #c8842a;
-            --border: #e2ddd7;
-            --tag-bg: #fff4e6;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Georgia', 'Batang', serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.85;
-            font-size: 15px;
-        }
-        header {
-            background: var(--surface);
-            border-bottom: 2px solid var(--accent);
-            padding: 40px 0 32px;
-            text-align: center;
-        }
-        header .label {
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--accent);
-            font-family: 'Courier New', monospace;
-            margin-bottom: 10px;
-        }
-        header h1 {
-            font-size: 26px;
-            font-weight: normal;
-            color: var(--text);
-            letter-spacing: -0.5px;
-        }
-        header .meta {
-            margin-top: 12px;
-            font-size: 13px;
-            color: var(--muted);
-            font-family: 'Courier New', monospace;
-        }
-        .container {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 48px 24px 80px;
-        }
-        .notice {
-            background: var(--tag-bg);
-            border-left: 3px solid var(--accent);
-            padding: 14px 18px;
-            margin-bottom: 40px;
-            font-size: 13.5px;
-            color: #7a5020;
-            border-radius: 0 4px 4px 0;
-        }
-        section {
-            margin-bottom: 44px;
-        }
-        h2 {
-            font-size: 15px;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-            color: var(--accent);
-            letter-spacing: 1px;
-            margin-bottom: 14px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border);
-        }
-        h2 .num {
-            display: inline-block;
-            background: var(--accent);
-            color: #fff;
-            font-size: 11px;
-            padding: 1px 7px;
-            border-radius: 2px;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-        p {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        ul, ol {
-            padding-left: 20px;
-            margin-bottom: 10px;
-        }
-        li {
-            margin-bottom: 6px;
-            color: #333;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 14px 0;
-            font-size: 13.5px;
-        }
-        th {
-            background: #f0ece6;
-            border: 1px solid var(--border);
-            padding: 9px 12px;
-            text-align: left;
-            font-weight: bold;
-            color: var(--text);
-        }
-        td {
-            border: 1px solid var(--border);
-            padding: 9px 12px;
-            color: #333;
-            vertical-align: top;
-        }
-        .tag {
-            display: inline-block;
-            background: var(--tag-bg);
-            color: var(--accent);
-            font-size: 12px;
-            padding: 2px 8px;
-            border-radius: 3px;
-            margin-right: 4px;
-            font-family: 'Courier New', monospace;
-        }
-        .contact-box {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-top: 2px solid var(--accent);
-            padding: 20px 24px;
-            border-radius: 0 0 6px 6px;
-            margin-top: 8px;
-        }
-        .contact-box p { margin: 4px 0; font-size: 14px; }
-        .contact-box a { color: var(--accent); text-decoration: none; }
-        footer {
-            text-align: center;
-            padding: 32px;
-            font-size: 12px;
-            color: var(--muted);
-            border-top: 1px solid var(--border);
-            font-family: 'Courier New', monospace;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개인정보처리방침 - pXlab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #181c27;
+    --border: #252a38;
+    --accent: #4f8ef7;
+    --accent2: #7dd3b0;
+    --text: #e2e6f0;
+    --text-muted: #7a8299;
+    --text-dim: #4a5068;
+    --tag-bg: #1a2035;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  /* grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 28px 120px;
+  }
+
+  /* ── Header ── */
+  header {
+    margin-bottom: 64px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  h1 span { color: var(--accent); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: .04em;
+  }
+  .meta span { color: var(--accent2); }
+
+  .intro-box {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    border-radius: 6px;
+    padding: 20px 24px;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+  .intro-box strong { color: var(--accent2); font-weight: 500; }
+
+  /* ── 데이터 없음 강조 카드 ── */
+  .no-data-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 40px 0;
+  }
+  @media (max-width: 540px) {
+    .no-data-grid { grid-template-columns: 1fr; }
+  }
+  .no-data-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .no-data-card .icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .no-data-card .label {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 4px;
+  }
+  .no-data-card .value {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent2);
+  }
+
+  /* ── Sections ── */
+  section {
+    margin-bottom: 48px;
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: .1em;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.9;
+  }
+
+  ul {
+    list-style: none;
+    margin: 12px 0;
+  }
+  ul li {
+    font-size: 14px;
+    color: var(--text-muted);
+    padding: 6px 0 6px 20px;
+    position: relative;
+    line-height: 1.7;
+  }
+  ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .highlight {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .highlight2 { color: var(--accent2); font-weight: 500; }
+
+  /* permission table */
+  .perm-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  .perm-table th {
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .perm-table td {
+    padding: 10px 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .perm-table td:first-child {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-brand {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .footer-brand span { color: var(--accent); }
+  .footer-email {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .footer-email:hover { color: var(--accent); }
+  .footer-date {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+</style>
 </head>
 <body>
+<div class="wrap">
 
-<header>
-    <div class="label">Privacy Policy</div>
-    <h1>개인정보처리방침</h1>
-    <div class="meta">pXlab firstclass &nbsp;·&nbsp; pineapple's lab &nbsp;·&nbsp; 시행일: 2026년 5월 12일</div>
-</header>
+  <header>
+    <div class="badge">Privacy Policy</div>
+    <h1>개인정보<span>처리방침</span></h1>
+    <div class="meta">pXlab · pineapple's lab · 시행일: <span>2026년 5월 15일</span></div>
 
-<div class="container">
-
-    <div class="notice">
-        본 방침은 <strong>pXlab firstclass</strong> 앱(이하 "앱") 이용과 관련하여 수집되는 개인정보의 처리 목적, 항목, 보관 기간, 제3자 제공 여부 등을 안내합니다.
+    <div class="intro-box">
+      본 방침은 <strong>pXlab</strong> Chrome 확장 프로그램(이하 "본 확장 프로그램")이 사용자의 개인정보를 어떻게 취급하는지 안내합니다.<br>
+      본 확장 프로그램은 <strong>사용자의 개인 데이터를 수집하지 않으며</strong>, 모든 기능은 사용자의 기기에서만 로컬로 처리됩니다.
     </div>
 
-    <!-- 1 -->
-    <section>
-        <h2><span class="num">01</span>수집하는 개인정보의 항목 및 수집 방법</h2>
-        <p>앱은 서비스 제공을 위해 아래와 같은 개인정보를 수집합니다.</p>
-        <table>
-            <thead>
-                <tr><th>구분</th><th>수집 항목</th><th>수집 방법</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="tag">필수</span></td>
-                    <td>이름, 이메일 주소, 비밀번호, 연락처, 주소, 결제 정보</td>
-                    <td>회원가입·결제 시 이용자 직접 입력</td>
-                </tr>
-                <tr>
-                    <td><span class="tag">선택</span></td>
-                    <td>생년월일, 성별, 추가 연락처</td>
-                    <td>이용자 직접 입력</td>
-                </tr>
-                <tr>
-                    <td><span class="tag">자동</span></td>
-                    <td>기기 정보(OS 버전, 기기 모델, 기기 식별자), 앱 사용 로그, 오류 로그, 접속 일시, IP 주소</td>
-                    <td>앱 이용 과정에서 자동 수집</td>
-                </tr>
-            </tbody>
-        </table>
-        <p>선택 항목은 수집에 동의하지 않더라도 기본 서비스 이용에 불이익이 없습니다.</p>
-    </section>
+    <div class="no-data-grid">
+      <div class="no-data-card">
+        <div class="icon">🚫</div>
+        <div class="label">데이터 수집</div>
+        <div class="value">수집 없음</div>
+      </div>
+      <div class="no-data-card">
+        <div class="icon">📡</div>
+        <div class="label">외부 전송</div>
+        <div class="value">전송 없음</div>
+      </div>
+      <div class="no-data-card">
+        <div class="icon">🤝</div>
+        <div class="label">제3자 공유</div>
+        <div class="value">공유 없음</div>
+      </div>
+    </div>
+  </header>
 
-    <!-- 2 -->
-    <section>
-        <h2><span class="num">02</span>개인정보의 수집 및 이용 목적</h2>
-        <table>
-            <thead>
-                <tr><th>이용 목적</th><th>처리하는 개인정보</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>회원 관리 (본인 확인, 가입·탈퇴 처리, 부정 이용 방지, 공지 전달)</td>
-                    <td>이름, 이메일, 비밀번호, 연락처</td>
-                </tr>
-                <tr>
-                    <td>서비스 제공 및 결제 처리</td>
-                    <td>이름, 주소, 연락처, 결제 정보</td>
-                </tr>
-                <tr>
-                    <td>앱 품질 개선, 오류 분석, 통계·분석</td>
-                    <td>기기 정보, 앱 사용 로그, 오류 로그</td>
-                </tr>
-                <tr>
-                    <td>고객 문의 처리 및 분쟁 해결</td>
-                    <td>이름, 이메일, 연락처</td>
-                </tr>
-                <tr>
-                    <td>법적 의무 이행</td>
-                    <td>관계 법령에서 요구하는 정보</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+  <section>
+    <div class="section-num">01</div>
+    <h2>수집하는 개인정보의 항목</h2>
+    <p>본 확장 프로그램은 <span class="highlight2">어떠한 개인정보도 수집하지 않습니다.</span> 구체적으로 다음 데이터를 수집하지 않습니다:</p>
+    <ul>
+      <li>이름, 이메일 주소 등 식별 정보</li>
+      <li>브라우저 방문 기록 또는 검색 기록</li>
+      <li>쿠키 또는 유사한 추적 기술</li>
+      <li>기기 정보(OS 버전, 기기 모델, 기기 식별자)</li>
+      <li>앱 사용 로그, 오류 로그, 접속 일시</li>
+      <li>IP 주소 또는 위치 정보</li>
+      <li>사용자가 입력한 텍스트 또는 콘텐츠</li>
+    </ul>
+    <p>본 확장 프로그램은 사용자의 기기에서 로컬로만 작동하며, 어떠한 사용자 데이터도 외부 서버로 전송하지 않습니다.</p>
+  </section>
 
-    <!-- 3 -->
-    <section>
-        <h2><span class="num">03</span>개인정보의 보관 기간 및 파기</h2>
-        <p>수집된 개인정보는 수집·이용 목적이 달성된 후 지체 없이 파기합니다. 단, 관계 법령에 따라 아래 기간 동안 보관합니다.</p>
-        <table>
-            <thead>
-                <tr><th>보관 근거</th><th>보관 항목</th><th>보관 기간</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>전자상거래법 — 계약·청약철회 기록</td><td>계약 관련 정보</td><td>5년</td></tr>
-                <tr><td>전자상거래법 — 대금결제 기록</td><td>결제 정보</td><td>5년</td></tr>
-                <tr><td>전자상거래법 — 소비자 불만·분쟁 기록</td><td>문의·처리 내역</td><td>3년</td></tr>
-                <tr><td>통신비밀보호법 — 로그인 기록</td><td>접속 로그, IP</td><td>3개월</td></tr>
-            </tbody>
-        </table>
-        <p><strong>파기 방법:</strong> 전자 파일은 복구 불가능한 방법으로 영구 삭제하며, 종이 문서는 분쇄 또는 소각합니다.</p>
-    </section>
+  <section>
+    <div class="section-num">02</div>
+    <h2>개인정보의 수집 및 이용 목적</h2>
+    <p>개인정보를 수집하지 않으므로, 개인정보를 이용하는 목적이 없습니다. 본 확장 프로그램이 제공하는 모든 기능(메모, 할 일 관리 등 생산성 도구)은 사용자 데이터의 수집 없이 로컬에서만 작동합니다.</p>
+  </section>
 
-    <!-- 4 -->
-    <section>
-        <h2><span class="num">04</span>개인정보의 제3자 제공</h2>
-        <p>앱은 원칙적으로 이용자의 개인정보를 제3자에게 제공하지 않습니다. 다만 아래의 경우에는 예외로 합니다.</p>
-        <ul>
-            <li>이용자가 사전에 명시적으로 동의한 경우</li>
-            <li>법령의 규정에 의하거나 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
-        </ul>
-        <p>현재 제3자에게 제공되는 개인정보는 없습니다. 향후 제공이 필요한 경우, 사전에 이용자의 동의를 받고 본 방침을 업데이트합니다.</p>
-    </section>
+  <section>
+    <div class="section-num">03</div>
+    <h2>개인정보의 보관 기간 및 파기</h2>
+    <p>본 확장 프로그램은 사용자 개인정보를 외부에 저장하거나 보관하지 않습니다. 확장 프로그램 사용 중 생성되는 모든 임시 데이터는 사용자의 기기 내 브라우저 환경에서만 유지되며, 확장 프로그램 삭제 시 함께 제거됩니다. 외부 서버에 전송·보관되는 데이터가 없으므로 별도의 파기 절차는 필요하지 않습니다.</p>
+  </section>
 
-    <!-- 5 -->
-    <section>
-        <h2><span class="num">05</span>개인정보 처리 위탁</h2>
-        <p>앱은 서비스 운영을 위해 아래와 같이 개인정보 처리 업무를 위탁할 수 있습니다.</p>
-        <table>
-            <thead>
-                <tr><th>수탁자</th><th>위탁 업무</th><th>보유 및 이용 기간</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>결제 대행사 (예: PG사)</td><td>결제 처리 및 본인 인증</td><td>위탁 계약 종료 시까지</td></tr>
-                <tr><td>클라우드 서버 운영사</td><td>데이터 저장 및 시스템 운영</td><td>위탁 계약 종료 시까지</td></tr>
-            </tbody>
-        </table>
-        <p>위탁 계약 체결 시 개인정보보호 관련 법규 준수, 개인정보 보안 및 비밀 유지 등을 계약서에 명시하고 이를 관리합니다.</p>
-    </section>
+  <section>
+    <div class="section-num">04</div>
+    <h2>개인정보의 제3자 제공</h2>
+    <p>본 확장 프로그램은 <span class="highlight2">어떠한 제3자와도 사용자 데이터를 공유하지 않습니다.</span> 수집되는 개인정보 자체가 없으므로, 제3자 제공이 발생하지 않습니다.</p>
+    <ul>
+      <li>광고 또는 마케팅 목적의 데이터 공유 없음</li>
+      <li>분석 또는 통계 목적의 데이터 전송 없음</li>
+      <li>파트너사 또는 제휴사와의 정보 공유 없음</li>
+      <li>법적 요구 외 정부 기관 제공 없음</li>
+    </ul>
+  </section>
 
-    <!-- 6 -->
-    <section>
-        <h2><span class="num">06</span>이용자의 권리와 행사 방법</h2>
-        <p>이용자(법정대리인 포함)는 언제든지 다음 권리를 행사할 수 있습니다.</p>
-        <ul>
-            <li>개인정보 열람 요청</li>
-            <li>개인정보 정정·삭제 요청</li>
-            <li>개인정보 처리 정지 요청</li>
-            <li>동의 철회(회원 탈퇴)</li>
-        </ul>
-        <p>앱 내 <strong>'설정 → 개인정보변경'</strong> 또는 <strong>'회원탈퇴'</strong> 메뉴를 통해 직접 처리하거나, 아래 개인정보 보호책임자에게 서면·이메일로 요청하실 수 있습니다. 요청 수령 후 10영업일 이내에 처리합니다.</p>
-    </section>
+  <section>
+    <div class="section-num">05</div>
+    <h2>개인정보 처리 위탁</h2>
+    <p>개인정보를 수집하지 않으므로, 개인정보 처리를 위탁하는 수탁자가 없습니다. 결제 대행사, 클라우드 서버 운영사 등 외부 업체와의 개인정보 처리 위탁 관계가 존재하지 않습니다.</p>
+  </section>
 
-    <!-- 7 -->
-    <section>
-        <h2><span class="num">07</span>개인정보 보호를 위한 기술적·관리적 대책</h2>
-        <ul>
-            <li><strong>암호화:</strong> 비밀번호 및 결제 정보는 암호화하여 저장·전송합니다.</li>
-            <li><strong>접근 통제:</strong> 개인정보에 대한 접근 권한을 최소화하고 접근 이력을 기록합니다.</li>
-            <li><strong>보안 업데이트:</strong> 운영체제 및 라이브러리를 최신 상태로 유지하여 취약점을 관리합니다.</li>
-            <li><strong>내부 교육:</strong> 개인정보 처리 담당자에 대한 정기 교육을 실시합니다.</li>
-        </ul>
-    </section>
+  <section>
+    <div class="section-num">06</div>
+    <h2>필요 권한 및 사용 목적</h2>
+    <p>본 확장 프로그램은 정상적인 기능 수행을 위해 아래 Chrome 권한을 요청할 수 있으며, 이는 오직 명시된 목적으로만 사용됩니다.</p>
+    <table class="perm-table">
+      <thead>
+        <tr>
+          <th>권한</th>
+          <th>사용 목적</th>
+          <th>데이터 수집 여부</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>storage</td>
+          <td>메모 및 할 일 데이터를 브라우저 로컬 스토리지에 저장</td>
+          <td style="color: var(--accent2);">수집 없음 (로컬 전용)</td>
+        </tr>
+        <tr>
+          <td>activeTab</td>
+          <td>현재 활성화된 탭에서 확장 프로그램 기능 실행</td>
+          <td style="color: var(--accent2);">수집 없음</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-    <!-- 8 -->
-    <section>
-        <h2><span class="num">08</span>아동의 개인정보 보호</h2>
-        <p>앱은 만 14세 미만 아동의 개인정보를 수집하지 않습니다. 만 14세 미만임이 확인될 경우 해당 정보를 즉시 삭제합니다.</p>
-    </section>
+  <section>
+    <div class="section-num">07</div>
+    <h2>이용자의 권리와 행사 방법</h2>
+    <p>개인정보를 수집하지 않으므로, 수집된 정보에 대한 열람·정정·삭제·처리정지 요청의 대상이 되는 데이터가 없습니다. 개인정보 처리와 관련된 문의는 아래 문의처로 연락하십시오.</p>
+  </section>
 
-    <!-- 9 -->
-    <section>
-        <h2><span class="num">09</span>개인정보 보호책임자 및 문의</h2>
-        <p>개인정보 처리에 관한 문의, 불만 처리, 피해 구제 등은 아래 담당자에게 연락하십시오.</p>
-        <div class="contact-box">
-            <p><strong>운영사:</strong> pineapple's lab</p>
-            <p><strong>앱 이름:</strong> pXlab firstclass</p>
-            <p><strong>이메일:</strong> <a href="mailto:hmq1986@gmail.com">hmq1986@gmail.com</a></p>
-        </div>
-        <p style="margin-top:12px; font-size:13.5px; color: var(--muted);">
-            개인정보 침해에 대한 신고·상담은 개인정보보호위원회(privacy.go.kr, 국번없이 182) 또는 한국인터넷진흥원 개인정보침해신고센터(privacy.kisa.or.kr, 국번없이 118)에 문의하실 수 있습니다.
-        </p>
-    </section>
+  <section>
+    <div class="section-num">08</div>
+    <h2>아동의 개인정보 보호</h2>
+    <p>본 확장 프로그램은 어떠한 사용자의 개인정보도 수집하지 않으므로, 만 14세 미만 아동의 정보 역시 수집하지 않습니다. 아동도 안전하게 사용할 수 있습니다.</p>
+  </section>
 
-    <!-- 10 -->
-    <section>
-        <h2><span class="num">10</span>개인정보처리방침의 변경</h2>
-        <p>본 방침은 법령·정책 변경 또는 서비스 변동에 따라 개정될 수 있습니다. 변경 시에는 시행 <strong>7일 전</strong>부터 앱 내 공지사항 및 pineapple's lab 웹사이트를 통해 고지합니다. 중요한 변경의 경우 30일 전에 고지합니다.</p>
-        <p>현행 방침 시행일: <strong>2026년 5월 12일</strong></p>
-    </section>
+  <section>
+    <div class="section-num">09</div>
+    <h2>개인정보 보호책임자 및 문의</h2>
+    <p>개인정보 처리에 관한 문의는 아래 담당자에게 연락하십시오.</p>
+    <ul>
+      <li><span class="highlight">운영사:</span> pineapple's lab</li>
+      <li><span class="highlight">앱 이름:</span> pXlab</li>
+      <li><span class="highlight">이메일:</span> hmq1986@gmail.com</li>
+    </ul>
+    <p style="margin-top:12px;">개인정보 침해에 대한 신고·상담은 개인정보보호위원회(privacy.go.kr, 국번없이 182) 또는 한국인터넷진흥원 개인정보침해신고센터(privacy.kisa.or.kr, 국번없이 118)에 문의하실 수 있습니다.</p>
+  </section>
+
+  <section>
+    <div class="section-num">10</div>
+    <h2>개인정보처리방침의 변경</h2>
+    <p>본 방침은 법령·정책 변경 또는 서비스 변동에 따라 개정될 수 있습니다. 변경 시에는 시행 7일 전부터 Chrome 웹 스토어 확장 프로그램 페이지 및 본 웹페이지를 통해 고지합니다. 중요한 변경의 경우 30일 전에 고지합니다.</p>
+  </section>
+
+  <footer>
+    <div class="footer-row">
+      <div class="footer-brand">© 2026 <span>pineapple's lab</span> · pXlab</div>
+      <a class="footer-email" href="mailto:hmq1986@gmail.com">hmq1986@gmail.com</a>
+    </div>
+    <div class="footer-date">현행 방침 시행일: 2026년 5월 15일</div>
+  </footer>
 
 </div>
-
-<footer>
-    © 2026 pineapple's lab · pXlab firstclass · hmq1986@gmail.com
-</footer>
-
 </body>
 </html>
